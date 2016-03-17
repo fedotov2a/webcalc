@@ -1,0 +1,100 @@
+body {
+    background: #ddffd2;
+}
+
+h3 {
+	font-weight: bold;
+	margin: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#btn-count {
+	text-align: center;
+}
+
+.select-box {
+	background-color: rgb(85, 85, 85); 
+	padding: 5px; 
+	border: 1px solid rgb(204, 204, 204); 
+	font-size: 16px; 
+	background-color: rgb(247, 244, 246);
+	width: 550px;
+}
+
+.ball-box {
+	background-color: rgb(85, 85, 85); 
+	border: 1px solid rgb(204, 204, 204); 
+	font-size: 16px; 
+	background-color: rgb(247, 244, 246);
+	width: 70px;
+}
+
+.form-ball-box {
+	width: 150px;
+}
+
+.row div {
+	margin-top: 5px;
+	height: auto;
+}
+
+.btn-success {
+	background-color: rgb(255, 255, 255); 
+	background-image: -webkit-linear-gradient(top, rgb(66, 237, 66), rgb(12, 127, 12)); 
+	background-color: rgb(12, 127, 12);
+}
+
+.btn-danger {
+	background-color: rgb(255, 255, 255); 
+	background-image: -webkit-linear-gradient(top, rgb(247, 96, 93), rgb(229, 27, 20)); 
+	background-color: rgb(229, 27, 20);
+}
+
+.big-radio {
+	width: 1.1em; 
+	height: 1.1em; 
+}
+
+.big-checkbox {
+	width: 1.1em;
+	height: 1.1em;
+}
+
+.education-label {
+	font-size: 16px;
+}
+
+.achivment-label {
+	font-size: 16px;
+}
+
+.myHR {
+    width: 95%
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 1px;
+    
+    background-color: grey;
+    margin-top: -6px;
+    margin-bottom: 10px;
+}
+
+.result td {
+	vertical-align: center;
+    text-align: center;
+}
+
+.result th {
+	vertical-align: center;
+    text-align: center;
+}
+
+.result {
+	width: 70%;
+	height: 70%;
+}

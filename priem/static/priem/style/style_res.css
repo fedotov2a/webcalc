@@ -1,0 +1,42 @@
+h2 {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.row div {
+	margin-top: 5px;
+	height: auto;
+}
+
+.napr {
+	background-color: #ddd;
+	height: 50px;
+}
+
+.spoiler a{
+	font-size: 22px;
+	color: #000;
+	text-decoration: none;
+}
+
+.spoiler:hover {
+	cursor: pointer;
+}
+ 
+.spoiler-text {
+	margin: 5px 15px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	background-color: #fff;
+}
+
+.myHR {
+    width: 95%
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 1px;
+    
+    background-color: grey;
+    margin-top: -6px;
+    margin-bottom: 10px;
+}

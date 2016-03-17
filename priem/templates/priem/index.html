@@ -1,0 +1,117 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'priem/style/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'priem/style/style.css' %}">
+	<script src="{% static 'priem/js/jquery-1.11.3.min.js' %}"></script>
+	<script src="{% static 'priem/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'priem/js/script.js' %}"></script>
+	<meta charset="utf-8">
+	<title>Веб-калькулятор</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
+		</div>
+	</div>
+
+<form action="" method="post">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3>Какое у Вас образование?</h3>
+				<div class="education-label">
+					{% for field in form %}
+						{% if forloop.counter == 1 %}
+							{{ field }}
+							{{ field.label }}
+						{% endif %}
+					{% endfor %}
+				</div> 
+			</div>
+			<div class="col-sm-6">
+				<h3>Какая форма обучения Вас интересует?</h3>
+				<div class="education-label">
+					{% for field in form %}
+						{% if forloop.counter == 2 %}
+							{{ field }}
+							{{ field.label }}
+						{% endif %}
+					{% endfor %}
+				</div> 
+			</div>
+		</div>
+	</div>
+		
+
+	<br>
+	<div class="myHR">.</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 block-exam">
+				<h3>Какие у Вас баллы?</h3>
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+						  	{% for field in form %}
+								{% if forloop.counter >= 3 and forloop.counter <= 6 or forloop.counter >= 9 and forloop.counter <= 10 %}
+						        	<td align="center" width="14%">
+						        		<label>{{ field.label }}</label>
+										{{ field }}
+									</td>
+								{% endif %}
+							{% endfor %}
+					  	</tr>
+					  	<tr>
+					  		{% for field in form %}
+								{% if forloop.counter >= 11 and forloop.counter <= 15 %}
+						        	<td align="center" width="14%">
+						        		<label>{{ field.label }}</label>
+										{{ field }}
+									</td>
+								{% endif %}
+							{% endfor %}
+					  	</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="myHR">.</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 block-achiv">
+				<h3>Какие у Вас индивидуальные достижения?</h3>
+				<div class="row">
+					<div class="col-sm-12">
+						{% for field in form %}
+							{% if forloop.counter >= 16 %}
+								<div> {{ field }} 
+									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field.label }}</label>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<br>
+	<div class="myHR">.</div>
+
+	<div align="center">
+		<input type="submit" class="btn btn-lg btn-success count" value="Рассчитать">
+	</div>
+	{% csrf_token %}
+</form>
+<br>
+</body>
+</html>
