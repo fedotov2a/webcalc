@@ -1,5 +1,5 @@
 body {
-    background: #ddffd2;
+    background: #fff;
 }
 
 h3 {
@@ -60,7 +60,7 @@ ul {
 	height: 1.1em; 
 }
 
-.big-checkbox {
+.big-checkbox { 
 	width: 1.1em;
 	height: 1.1em;
 }
@@ -97,4 +97,9 @@ ul {
 .result {
 	width: 70%;
 	height: 70%;
+}
+
+.table {
+	margin-top: 0px;
+	margin-bottom: auto;
 }

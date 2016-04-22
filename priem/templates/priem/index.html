@@ -48,70 +48,72 @@
 		</div>
 	</div>
 		
-
 	<br>
-	<div class="myHR">.</div>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 block-exam">
 				<h3>Какие у Вас баллы?</h3>
-				<table class="table table-bordered">
-					<tbody>
-						<tr>
-						  	{% for field in form %}
-								{% if forloop.counter >= 3 and forloop.counter <= 6 or forloop.counter >= 9 and forloop.counter <= 10 %}
-						        	<td align="center" width="14%">
-						        		<label>{{ field.label }}</label>
-										{{ field }}
-									</td>
-								{% endif %}
-							{% endfor %}
-					  	</tr>
-					  	<tr>
-					  		{% for field in form %}
-								{% if forloop.counter >= 11 and forloop.counter <= 15 %}
-						        	<td align="center" width="14%">
-						        		<label>{{ field.label }}</label>
-										{{ field }}
-									</td>
-								{% endif %}
-							{% endfor %}
-					  	</tr>
-					</tbody>
-				</table>
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+							<tr>
+							  	{% for field in form %}
+									{% if forloop.counter >= 3 and forloop.counter <= 6 or forloop.counter >= 9 and forloop.counter <= 10 %}
+							        	<td align="center" width="14%">
+							        		<label>{{ field.label }}</label>
+											{{ field }}
+										</td>
+									{% endif %}
+								{% endfor %}
+						  	</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+						  	<tr>
+						  		{% for field in form %}
+									{% if forloop.counter >= 11 and forloop.counter <= 15 %}
+							        	<td align="center" width="20%">
+							        		<label>{{ field.label }}</label>
+											{{ field }}
+										</td>
+									{% endif %}
+								{% endfor %}
+						  	</tr>
+						</tbody>
+						<tbody><tr><td></td></tr></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="myHR">.</div>
+	<br>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 block-achiv">
 				<h3>Какие у Вас индивидуальные достижения?</h3>
-				<div class="row">
-					<div class="col-sm-12">
-						{% for field in form %}
-							{% if forloop.counter >= 16 %}
-								<div> {{ field }} 
-									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field.label }}</label>
+					{% for field in form %}
+						{% if forloop.counter >= 16 %}
+							 <div class="row">
+								<div class="col-sm-12"> 
+									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field }} {{ field.label }}</label>
 								</div>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</div>
+							</div>
+						{% endif %}
+					{% endfor %}
 			</div>	
 		</div>
 	</div>
 	<br>
-	<div class="myHR">.</div>
 
 	<div align="center">
 		<input type="submit" class="btn btn-lg btn-success count" value="Рассчитать">
 	</div>
+
 	{% csrf_token %}
-</form>
-<br>
+</form><br>
 </body>
 </html>

@@ -24,7 +24,7 @@ def printResult(result, totalResult, abiturientScores):
                 <div class="row">
                     <div class="col-sm-12">'''
     for department_name in result.keys():
-        # print(department_name)
+        #print(department_name)
         res += '''<div class="row">
                     <div class="col-sm-12">
                         <h2>''' + department_name + "</h2>"
@@ -34,7 +34,7 @@ def printResult(result, totalResult, abiturientScores):
                             <div class="spoiler folded">
                                 <a href="javascript:void(0);">''' + speciality[speciality_name][0] + " " + speciality_name + " " + u'<span style="background-color:#0f0; margin-left:5px;">' + str(totalResult[speciality_name]) + '</span>' + u'<span style="float:right;color:#000;font-size:22px;">↴</span>' + '''</a>
                             </div>'''
-                # print(speciality[speciality_name][0] + " " + speciality_name + " " + str(totalResult[speciality_name]))
+                #print(speciality[speciality_name][0] + " " + speciality_name + " " + str(totalResult[speciality_name]))
                 res += u'''<div class="spoiler-text">
                             <table class="table table-bordered result">
                                 <thead>
@@ -109,7 +109,7 @@ def processing(form):
         resultSpecAndDiscipID = {}
         
         if isResultSpecialities(countDiscipline, disciplinesId, prof):
-            # print(total)
+            #print(total)
             for exam in exams:
                 resultSpecAndDiscipID[str(exam.speciality_id)] = disciplinesId
                 spec_name = Speciality.objects.filter(id=int(exam.speciality_id))[0].name
@@ -119,9 +119,9 @@ def processing(form):
             result.append(resultSpecAndDiscipID)
             countDiscipline = 0
 
-    # print(result)
+    #print(result)
 
-    # print(abiturientScores)
+    #print(abiturientScores)
 
     #----------------------------------------------------------------
     scale = []
@@ -145,7 +145,7 @@ def processing(form):
                 discipline_names.append(Discipline.objects.filter(id=val)[0].name)
                 scale.append(Exam_scale.objects.filter(speciality_id=int(key)).filter(discipline_id=val)[0].ball_3)
 
-            # print(scale)
+            #print(scale)
             for x, y in zip(discipline_names, scale):
                 temp[x] = y
 
@@ -165,6 +165,6 @@ def processing(form):
     #---------------------------------------------------------------
 
     res = printResult(result_3, totalResult, abiturientScores)
-    # print("----------------------")
-    # print(res)
+    #print("----------------------")
+    #print(res)
     return res
