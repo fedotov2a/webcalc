@@ -103,3 +103,16 @@ ul {
 	margin-top: 0px;
 	margin-bottom: auto;
 }
+
+.borderline-none {
+	border-top: none !important;
+}
+
+img {
+	height: 26px;
+	width: 26px;
+}
+
+.tooltip-inner {
+	max-width: 500px !important;
+}

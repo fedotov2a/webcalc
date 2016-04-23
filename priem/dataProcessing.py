@@ -18,7 +18,7 @@ def isResultSpecialities(countDiscipline, disciplinesId, prof):
 
 def printResult(result, totalResult, abiturientScores):
     if len(result) == 0:
-        return u"<h1>К сожалению, мы ничего не нашли :(</h1>"
+        return u"<h1>Ничего не найдено</h1>"
     
     res = '''<div class="container">
                 <div class="row">

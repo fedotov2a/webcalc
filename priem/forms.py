@@ -28,5 +28,5 @@ class DataForm(forms.Form):
     certificate =             forms.BooleanField(label=_(u'Наличие аттестата о среднем общем образовании с отличием | Наличие золотой или серебрянной медали (3 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
     certificateProfessional = forms.BooleanField(label=_(u'Наличие диплома о среднем профессиональном образовании с отличием (3 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
     olympiad =                forms.BooleanField(label=_(u'Участие в олимпиадах (2 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
-    champion =                forms.BooleanField(label=_(u'Наличие статуса чемпиона | Наличие золотого знака отличия Всероссийского физкультурно-спортивного комплекса ГТО (2 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
-    other =                   forms.BooleanField(label=_(u'Участие в иных интеллектуальных и (или) творческих конкурсах, физкультурных мероприятиях и спортивных мероприятиях (2 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
+    champion =                forms.BooleanField(label=_(u'Наличие статуса чемпиона | Наличие золотого знака отличия ГТО (2 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
+    other =                   forms.BooleanField(label=_(u'Участие в иных конкурсах (2 балла)'), widget=CheckboxInput(attrs={'class':'big-checkbox'}))
