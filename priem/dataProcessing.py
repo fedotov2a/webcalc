@@ -20,6 +20,8 @@ def printResult(result, totalResult, abiturientScores, satisfactory_marks):
     if len(result) == 0:
         return u"<h1>Ничего не найдено</h1>"
     
+    failResult = False
+
     res = '''<div class="container">
                 <div class="row">
                     <div class="col-sm-12">'''
@@ -30,9 +32,9 @@ def printResult(result, totalResult, abiturientScores, satisfactory_marks):
                         <h2>''' + department_name + "</h2>"
         for speciality in result[department_name]:
             for speciality_name in speciality.keys():
-                res += '''<div class="napr" style="background-color: #ccc;">
+                res += '''<div class="napr">
                             <div class="spoiler folded">
-                                <a href="javascript:void(0);">''' + speciality[speciality_name][0] + " " + speciality_name + " " + u'<span style="background-color:#0f0; margin-left:5px;">' + str(totalResult[speciality_name]) + '</span>' + u'<span style="float:right;color:#000;font-size:22px;">↴</span>' + '''</a>
+                                <a href="javascript:void(0);">''' + speciality[speciality_name][0] + " " + speciality_name + " " + u'<span style="margin-left:0px;"> --- Ваш балл: ' + str(totalResult[speciality_name]) + '</span>' + u'<span style="float:right;font-size:22px;">↴</span>' + '''</a>
                             </div>'''
 
                 #print(speciality[speciality_name][0] + " " + speciality_name + " " + str(totalResult[speciality_name]))
@@ -49,32 +51,44 @@ def printResult(result, totalResult, abiturientScores, satisfactory_marks):
                 for discipline_name in speciality[speciality_name][1]:
                     res += "<tr>"
                     if abiturientScores[speciality_name].has_key(discipline_name):
-                        res += "<td>" + discipline_name + "</td>" + "<td>" + str(speciality[speciality_name][1][discipline_name]) + "</td>" + "<td>" + str(abiturientScores[speciality_name][discipline_name]) + "</td>"
+                    	if int(speciality[speciality_name][1][discipline_name]) > int(abiturientScores[speciality_name][discipline_name]):
+                    		res += '<td bgcolor="#F2776F">' + discipline_name + "</td>" + '<td bgcolor="#F2776F">' + str(speciality[speciality_name][1][discipline_name]) + "</td>" + '<td bgcolor="#F2776F">' + str(abiturientScores[speciality_name][discipline_name]) + "</td>"
+                        	failResult = True
+                        else:
+                        	res += "<td>" + discipline_name + "</td>" + "<td>" + str(speciality[speciality_name][1][discipline_name]) + "</td>" + "<td>" + str(abiturientScores[speciality_name][discipline_name]) + "</td>"
                     else:
                         res += "<td>" + discipline_name + "</td>" + "<td>" + str(speciality[speciality_name][1][discipline_name]) + "</td>" + "<td></td>"
                     res += "</tr>"
-                res += '''</tbody></table>''' # 2 div
+                res += '''</tbody></table>'''
 
-                res += '''<div>'''
+                res += '''<div class="probability-box">'''
                 #print(str(totalResult[speciality_name]))
                 if satisfactory_marks.has_key(speciality_name):
-                	if int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 20:
-                		res += u'''Вероятность поступления велика'''
-                	elif int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 10:
-                		res += u'''Вероятно вы поступите на это направление'''
-                	elif int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 0:
-                		res += u'''Вероятность мала'''
+                	if failResult == True:
+                		res += u'''К сожалению, Вы <i>не сможете</i> поступить на данное направление'''
+                		failResult = False
                 	else:
-                		res += u'''Очень маловероятно, что Вы поступите'''
-                	#print(satisfactory_marks[speciality_name])
+	                	if totalResult[speciality_name] - satisfactory_marks[speciality_name] >= 30:
+	                		res += u'''С Вашими баллами <i>велика</i> вероятность поступления на бюджетное место'''
+	                	elif totalResult[speciality_name] - satisfactory_marks[speciality_name] >= 0:
+	                		res += u'''С Вашими баллами <i>вероятно</i> поступление на бюджетное место'''
+	                	elif totalResult[speciality_name] - satisfactory_marks[speciality_name] >= -5:
+	                		res += u'''С Вашими баллами <i>не велика</i> вероятность поступления на бюджетное место'''
+	                	else:
+	                		res += u'''С Вашими баллами <i>крайне мала</i> вероятность поступления на бюджетное место'''
+	                	#print(satisfactory_marks[speciality_name])
+	                res += u'''<br>Проходной балл в 2015 году был ''' + str(satisfactory_marks[speciality_name])
                 else:
-                	res += u'''Данные о проходных баллах неизвестны'''
+                	if failResult == True:
+                		res += u'''К сожалению, Вы <i>не сможете</i> поступить на данное направление<br>'''
+                		failResult = False
+                	res += u'''Данные о проходных баллах <i>неизвестны</i>'''
 
                 res += '''</div></div></div>'''
 
 
-        res += '</div></div><br><div class="myHR">.</div>'
-    res += "</div></div></div>"
+        res += '''</div></div><br>'''
+    res += '''</div></div></div>'''
     return res
 
 def processing(form):

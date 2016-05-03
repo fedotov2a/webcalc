@@ -9,7 +9,7 @@ h2 {
 }
 
 .napr {
-	background-color: #ddd;
+	background-color: #E5E5E5;
 	height: 50px;
 }
 
@@ -25,9 +25,11 @@ h2 {
  
 .spoiler-text {
 	margin: 5px 15px;
+	margin-left: 0px;
+	margin-right: 0px;
 	margin-bottom: 10px;
 	font-size: 18px;
-	background-color: #fff;
+	background-color: #EEE;
 }
 
 .myHR {

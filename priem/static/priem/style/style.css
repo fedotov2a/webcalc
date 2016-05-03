@@ -100,7 +100,6 @@ ul {
 }
 
 .table {
-	margin-top: 0px;
 	margin-bottom: auto;
 }
 
@@ -115,4 +114,9 @@ img {
 
 .tooltip-inner {
 	max-width: 500px !important;
+}
+
+.probability-box {
+	font-size: 16px;
+	margin-top: 5px;
 }
