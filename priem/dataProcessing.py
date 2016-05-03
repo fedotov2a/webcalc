@@ -2,7 +2,7 @@
 
 from django.db import connection
 from django.db.models import Q
-from .models import Speciality, Department, Exam, Exam_scale, Discipline
+from .models import Speciality, Department, Exam, Exam_scale, Discipline, Satisfactory_mark
 
 def isBachelor(departmentId):
     return (departmentId >= 1 and departmentId <= 17) or (departmentId >= 25 and departmentId <= 35)
@@ -16,7 +16,7 @@ def isDisciplineContainsSpeciality(discip_id, disciplinesId, dataForm):
 def isResultSpecialities(countDiscipline, disciplinesId, prof):
     return (countDiscipline == (3 - prof) or (countDiscipline == (2 - prof) and len(disciplinesId) == (4 - prof)))
 
-def printResult(result, totalResult, abiturientScores):
+def printResult(result, totalResult, abiturientScores, satisfactory_marks):
     if len(result) == 0:
         return u"<h1>Ничего не найдено</h1>"
     
@@ -34,6 +34,7 @@ def printResult(result, totalResult, abiturientScores):
                             <div class="spoiler folded">
                                 <a href="javascript:void(0);">''' + speciality[speciality_name][0] + " " + speciality_name + " " + u'<span style="background-color:#0f0; margin-left:5px;">' + str(totalResult[speciality_name]) + '</span>' + u'<span style="float:right;color:#000;font-size:22px;">↴</span>' + '''</a>
                             </div>'''
+
                 #print(speciality[speciality_name][0] + " " + speciality_name + " " + str(totalResult[speciality_name]))
                 res += u'''<div class="spoiler-text">
                             <table class="table table-bordered result">
@@ -52,7 +53,26 @@ def printResult(result, totalResult, abiturientScores):
                     else:
                         res += "<td>" + discipline_name + "</td>" + "<td>" + str(speciality[speciality_name][1][discipline_name]) + "</td>" + "<td></td>"
                     res += "</tr>"
-                res += '''</tbody></table></div></div>'''
+                res += '''</tbody></table>''' # 2 div
+
+                res += '''<div>'''
+                #print(str(totalResult[speciality_name]))
+                if satisfactory_marks.has_key(speciality_name):
+                	if int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 20:
+                		res += u'''Вероятность поступления велика'''
+                	elif int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 10:
+                		res += u'''Вероятно вы поступите на это направление'''
+                	elif int(totalResult[speciality_name]) - satisfactory_marks[speciality_name] > 0:
+                		res += u'''Вероятность мала'''
+                	else:
+                		res += u'''Очень маловероятно, что Вы поступите'''
+                	#print(satisfactory_marks[speciality_name])
+                else:
+                	res += u'''Данные о проходных баллах неизвестны'''
+
+                res += '''</div></div></div>'''
+
+
         res += '</div></div><br><div class="myHR">.</div>'
     res += "</div></div></div>"
     return res
@@ -163,8 +183,14 @@ def processing(form):
             temp_2 = {}
 
     #---------------------------------------------------------------
+    satisfactory_mark = Satisfactory_mark.objects.all()
+    satisfactory_marks = {}
 
-    res = printResult(result_3, totalResult, abiturientScores)
+    for sm in satisfactory_mark:
+    	satisfactory_marks[sm.name] = sm.mark
+
+
+    res = printResult(result_3, totalResult, abiturientScores, satisfactory_marks)
     #print("----------------------")
     #print(res)
     return res

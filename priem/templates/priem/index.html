@@ -101,7 +101,7 @@
 						{% if forloop.counter >= 16 %}
 							 <div class="row">
 								<div class="col-sm-12"> 
-									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field }} {{ field.label }}</label>
+									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field }} {{ field.label }} 
 									{% if forloop.counter == 16 %}
 										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
 										Осуществление волонтерской (добровольческой) деятельности (если с даты завершения периода осуществления указанной деятельности до дня завершения приема документов и вступительных испытаний прошло не более четырёх лет">
@@ -116,7 +116,7 @@
 									{% endif %}
 									{% if forloop.counter == 19 %}
 										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Участие поступающих в олимпиадах (не используемые для получения особых прав и (или) преимуществ при поступлаении на обучение по конкретным условиям поступления и конкретным основаниям приема).">
+										Участие поступающих в олимпиадах (не используемые для получения особых прав и (или) преимуществ при поступлении на обучение по конкретным условиям поступления и конкретным основаниям приема).">
 									{% endif %}
 									{% if forloop.counter == 20 %}
 										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
@@ -126,6 +126,7 @@
 										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
 										Участие в иных интеллектуальных и (или) творческих конкурсах, физкультурных мероприятиях и спортивных мероприятиях, проводимых в целях выявления и поддержки лиц, проявивших выдающиеся способности.">
 									{% endif %}
+									</label>
 								</div>
 							</div>
 						{% endif %}
