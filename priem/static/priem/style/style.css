@@ -56,17 +56,13 @@ ul {
 }
 
 .big-radio {
-	width: 1.1em; 
-	height: 1.1em; 
+	width: 1em; 
+	height: 1em;
 }
 
 .big-checkbox { 
 	width: 1.1em;
 	height: 1.1em;
-}
-
-.education-label {
-	font-size: 16px;
 }
 
 .achivment-label {
@@ -103,13 +99,20 @@ ul {
 	margin-bottom: auto;
 }
 
+.table-exam {
+	margin-bottom: auto;
+	max-width: 65%;
+}
+
 .borderline-none {
 	border-top: none !important;
 }
 
 img {
-	height: 26px;
-	width: 26px;
+	height: 100px;
+	width: 100px;
+	float: left;
+	margin-right: 20px
 }
 
 .center {
@@ -130,4 +133,69 @@ img {
 .probability-box {
 	font-size: 16px;
 	margin-top: 5px;
+}
+
+.header-main {
+	margin-top: 30px;
+}
+
+.header {
+	padding-top: 5px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+}
+
+/*.education-label input {
+  display: none;
+}*/
+.header-form-type {
+	margin-top: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+.education-label label {
+  float: left;
+  border-radius: 4px;
+}
+
+.education-label label {
+  display: inline-block;
+  width: 120px;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.education-label input:checked + label {
+  background-color: #FF55FF;
+}
+
+.education-label label:hover {
+    cursor: pointer;
+}
+
+
+.block-form {
+	margin-left: 50px;
+}
+
+.block-exam {
+	margin-left: 50px;
+	clear: left;
+}
+
+.header-exam {
+	margin-bottom: 10px;
+}
+
+.btn-lg {
+	margin-top: 25px;
+	margin-right: 30px;
+	border-radius: 4px;
 }

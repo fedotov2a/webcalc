@@ -9,8 +9,8 @@ EDUCATION_FORM_TYPE_CHOICES = [('normal',_(u'Очная')), ('correspondence',_(
 # ACHIVMENT_CHOICES = [('volunteer','Волонтер'), ('essay','Сочинение')]
 
 class DataForm(forms.Form):
-    education =               forms.ChoiceField(label='', choices=EDUCATION_CHOICES, widget=RadioSelect(attrs={'class':'big-radio education-radio'}))
-    educationFormType =       forms.ChoiceField(label='', choices=EDUCATION_FORM_TYPE_CHOICES, widget=RadioSelect(attrs={'class':'big-radio education-radio'}))
+    education =               forms.ChoiceField(label='', choices=EDUCATION_CHOICES, widget=RadioSelect(attrs={'class':'big-radio education-radio'}), initial=EDUCATION_CHOICES[0][0])
+    educationFormType =       forms.ChoiceField(label='', choices=EDUCATION_FORM_TYPE_CHOICES, widget=RadioSelect(attrs={'class':'big-radio education-radio'}), initial=EDUCATION_FORM_TYPE_CHOICES[0][0])
     russian =                 forms.CharField(label=_(u'Русский язык'), widget=TextInput(attrs={'type':'number', 'min':'0', 'max':'100', 'class':'form-control ball-box'}))
     math =                    forms.CharField(label=_(u'Математика'), widget=TextInput(attrs={'type':'number', 'min':'0', 'max':'100', 'class':'form-control ball-box'}))
     literature =              forms.CharField(label=_(u'Литература'), widget=TextInput(attrs={'type':'number', 'min':'0', 'max':'100', 'class':'form-control ball-box'}))

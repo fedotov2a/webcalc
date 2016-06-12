@@ -12,30 +12,16 @@
 	<title>Веб-калькулятор</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
+<div style="float: left; width: 60%">
+			<div class=" header">
+				<img src="../../static/priem/images/tsu.png">
+				<h1 class="header-main"><b>Калькулятор баллов ЕГЭ</b></h1>
 			</div>
-		</div>
-	</div>
+			<br><br>
 
 <form action="" method="post">
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6">
-				<h3>Какое у Вас образование?</h3>
-				<div class="education-label">
-					{% for field in form %}
-						{% if forloop.counter == 1 %}
-							{{ field }}
-							{{ field.label }}
-						{% endif %}
-					{% endfor %}
-				</div> 
-			</div>
-			<div class="col-sm-6">
-				<h3>Какая форма обучения Вас интересует?</h3>
+			<div class="block-form">
+				<h3 class="header-form-type">Форма обучения: </h3>
 				<div class="education-label">
 					{% for field in form %}
 						{% if forloop.counter == 2 %}
@@ -45,108 +31,84 @@
 					{% endfor %}
 				</div> 
 			</div>
-		</div>
-	</div>
-		
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 block-exam">
-				<h3>Какие у Вас баллы?</h3>
-				<div class="table-responsive">
-					<table class="table">
+			<br><br><br>
+
+			<div class="block-exam">
+				<h3 class="header-exam">Баллы за ЕГЭ:</h3>
+				<div>
+					<table class="table table-exam">
 						<tbody>
 							<tr>
 							  	{% for field in form %}
-									{% if forloop.counter >= 3 and forloop.counter <= 6 or forloop.counter >= 9 and forloop.counter <= 10 %}
-							        	<td align="center" width="14%" class="borderline-none">
+									{% if forloop.counter >= 3 and forloop.counter <= 6 %}
+							        	<td align="center" class="borderline-none">
 							        		<label>{{ field.label }}</label>
 											{{ field }}
 										</td>
 									{% endif %}
 								{% endfor %}
 						  	</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="table-responsive">
-					<table class="table">
-						<tbody>
-						  	<tr>
-						  		{% for field in form %}
-									{% if forloop.counter >= 11 and forloop.counter <= 15 %}
-							        	<td align="center" width="20%">
+							<tr>
+							  	{% for field in form %}
+									{% if forloop.counter >= 9 and forloop.counter <= 12 %}
+							        	<td align="center">
 							        		<label>{{ field.label }}</label>
 											{{ field }}
 										</td>
 									{% endif %}
 								{% endfor %}
+						  	</tr>
+						  	<tr>
+						  		{% for field in form %}
+									{% if forloop.counter == 13 %}
+							        	<td align="center">
+							        		<label>{{ field.label }}</label>
+											{{ field }}
+										</td>
+									{% endif %}
+								{% endfor %}
+								{% for field in form %}
+									{% if forloop.counter == 14 %}
+							        	<td align="center" colspan="2" style="padding-left: 25px;">
+							        		<label>{{ field.label }}</label>
+											{{ field }}
+										</td>
+									{% endif %}
+								{% endfor %}
+								{% for field in form %}
+									{% if forloop.counter == 15 %}
+							        	<td align="center">
+							        		<label>{{ field.label }}</label>
+											{{ field }}
+										</td>
+									{% endif %}
+								{% endfor %}
+						  	</tr>
+						  	<tr>
+						  		<td colspan="4" class="borderline-none" align="center">
+						  			<input type="submit" class="btn btn-lg btn-success count" value="Рассчитать">
+						  		</td>
 						  	</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-		</div>
-	</div>
 	<br>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 block-achiv">
-				<h3>Какие у Вас индивидуальные достижения? <img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-				Поступающие на обучение вправе представить сведения о своих индивидуальных достижениях, результаты которых учитываются при приеме на обучение. Учет результатов индивидуальных достижений осуществляется посредством начисления баллов за индивидуальные достижения и (или) в качестве преимущества при равенстве суммы конкурсных баллов.
-				Баллы, начисленные за индивидуальные достижения, включаются в сумму конкурсных баллов.
-				Поступающий представляет документы, подтверждающие получение результатов индивидуальных достижений."></h3>
-					{% for field in form %}
-						{% if forloop.counter >= 16 %}
-							 <div class="row">
-								<div class="col-sm-12"> 
-									<label for="{{ field.id_for_label }}" class="achivment-label">{{ field }} {{ field.label }} 
-									{% if forloop.counter == 16 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Осуществление волонтерской (добровольческой) деятельности (если с даты завершения периода осуществления указанной деятельности до дня завершения приема документов и вступительных испытаний прошло не более четырёх лет">
-									{% endif %}
-									{% if forloop.counter == 17 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Наличие аттестата о среднем общем образовании с отличием или аттестата о среднем общем образовании (среднем (полном) общем образовании), содержащего сведения о награждении золотой или серебряной медалью.">
-									{% endif %}
-									{% if forloop.counter == 18 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Наличие диплома о среднем профессиональном образовании с отличием.">
-									{% endif %}
-									{% if forloop.counter == 19 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Участие поступающих в олимпиадах (не используемые для получения особых прав и (или) преимуществ при поступлении на обучение по конкретным условиям поступления и конкретным основаниям приема).">
-									{% endif %}
-									{% if forloop.counter == 20 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Наличие статуса чемпиона и призера Олимпийских игр, Паралимпийских игр и Сурдлимпийских игр, чемпиона мира, чемпиона Европы, лица, занявшего первое место на первенстве мира, первенстве Европы по видам спорта, включенным в программы Олимпийских игр, Паралимпийских игр и Сурдлимпийских игр, наличие золотого знака отличия Всероссийского физкультурно-спортивного комплекса 'Готов к труду и обороне' (ГТО) и удостоверения к нему установленного образца - при поступлении на обучение по специальностям и направлениям подготовки, не относящимся к специальностям и направлениям подготовки в области физической культуры и спорта (не используемые для получения преимуществ при поступлении на обучение по конкретным условиям поступления и конкретным основаниям приема).">
-									{% endif %}
-									{% if forloop.counter == 21 %}
-										<img src="../../static/priem/images/info.png" data-toggle="tooltip" data-placement="right" title="
-										Участие в иных интеллектуальных и (или) творческих конкурсах, физкультурных мероприятиях и спортивных мероприятиях, проводимых в целях выявления и поддержки лиц, проявивших выдающиеся способности.">
-									{% endif %}
-									</label>
-								</div>
-							</div>
-						{% endif %}
-					{% endfor %}
-			</div>	
-		</div>
-	</div>
-	<br>
-
-	<div align="center">
-		<input type="submit" class="btn btn-lg btn-success count" value="Рассчитать">
-	</div>
 
 	{% csrf_token %}
 </form><br>
+</div>
 
-<script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
+<div style="float: left;">
+<div style="margin-top: 130px;">
+	<h3> Добро пожаловать! </h3>
+	<h4> и бла бла бла бла <br> бла бла бла бла бла бла!</h4>
+	<h4> и бла бла бла бла <br> бла бла бла бла бла бла!</h4>
+	<h4> и бла бла бла бла <br> бла бла бла бла бла бла!</h4>
+	<h4> а также бла бла бла бла <br> бла бла бла бла бла бла!</h4>
+	<h4> и бла бла бла бла <br> бла бла бла бла бла бла!</h4>
+	<h4> Удачи!</h4>
+</div>
+</div>	
 </body>
 </html>
