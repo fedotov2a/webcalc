@@ -18,15 +18,13 @@ def isResultSpecialities(countDiscipline, disciplinesId, prof):
 
 def printResult(result, totalResult, abiturientScores, satisfactory_marks, prof):
     if len(result) == 0:
-        return u"<h1>Ничего не найдено</h1>"
+        return u'''<h1 style="margin-left: 170px; margin-top: 55px;">Ничего не найдено</h1>'''
     
     failResult = False
     lowResult = False
     additionalExam = False
 
-    res = '''<div class="container">
-                <div class="row">
-                    <div class="col-sm-12">'''
+    res = '''<div class="res-exam">'''
     for department_name in result.keys():
         #print(department_name)
         res += '''<div class="row">

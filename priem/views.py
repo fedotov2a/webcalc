@@ -22,7 +22,16 @@ def index(request):
                         <script src="../../static/priem/js/script.js"></script>
                         <meta charset="utf-8">
                         <title>Веб-калькулятор</title>
-                    </head>''' + "<body> %s <br><br></body></html>" % res
+                    </head>''' + u'''<body>
+                        <div class=" header">
+                            <img src="../../static/priem/images/tsu.png">
+                            <h1 class="header-main"><b>Калькулятор баллов ЕГЭ</b></h1>
+                        </div> %s <br><br>
+                        <div align="center">
+                            <a href="" class="btn btn-lg btn-success" role="button">Посчитать ещё</a>
+                        </div>
+                        <br><br><br><br>
+                        </body></html>''' % res
         return HttpResponse(html)
 
     
